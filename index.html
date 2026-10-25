@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Sol Atlas</title>
+  <meta name="description" content="The Sun and the eight planets of our solar system, in orbit, with facts about each one." />
+  <meta name="theme-color" content="#0B1026" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.181.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      SOL<span>ATLAS</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#explore">Planets</a>
+      <a href="#numbers">Numbers</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span> One star, eight planets</p>
+        <h1>
+          <span class="h-solid">THE SOLAR</span>
+          <span class="h-grad">SYSTEM</span>
+        </h1>
+        <p class="lede">
+          Eight planets orbit the Sun, from tiny Mercury to far-off Neptune.
+          Watch them move, then stop on any of them to read what it's like.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#explore">See the planets</a>
+        </div>
+      </div>
+      <div class="horizon" aria-hidden="true">
+        <div class="horizon-planet"><div class="horizon-surface"></div></div>
+      </div>
+    </section>
+
+    <!-- Explorer -->
+    <section id="explore" class="explore">
+      <div class="section-head">
+        <h2>The planets in orbit</h2>
+        <p class="hint">
+          <span class="hint-desktop">Hover over a planet to stop the orbits and enlarge it. Click to fly to it, or drag to turn the view.</span>
+          <span class="hint-touch">Press and hold a planet to enlarge it. Tap to fly to it, or swipe sideways to turn the view.</span>
+        </p>
+      </div>
+
+      <div class="system3d" id="system3d">
+        <canvas id="solar-canvas" role="img" aria-label="3D animation of the Sun and the eight planets in orbit"></canvas>
+        <div class="labels3d" id="labels3d" aria-hidden="true"></div>
+        <button type="button" class="overview-btn" id="overview-btn" hidden>&larr; Back to overview</button>
+        <p class="system-status" id="system-status">Loading the 3D view&hellip;</p>
+      </div>
+
+      <div class="body-chips" id="body-chips" role="list" aria-label="Pick the Sun or a planet"></div>
+
+      <article class="panel" id="panel" aria-live="polite">
+        <div class="panel-empty" id="panel-empty">
+          <div class="radar" aria-hidden="true"></div>
+          <p class="panel-empty-title">No planet selected</p>
+          <p class="panel-empty-text">Pick the Sun or a planet above.</p>
+        </div>
+
+        <div class="panel-body" id="panel-body" hidden>
+          <div class="panel-top">
+            <div class="panel-title">
+              <span class="panel-index" id="p-index">00</span>
+              <div>
+                <p class="panel-type" id="p-type"></p>
+                <h3 class="panel-name" id="p-name"></h3>
+                <p class="panel-tagline" id="p-tagline"></p>
+              </div>
+            </div>
+            <div class="panel-preview" id="p-preview" aria-hidden="true"></div>
+          </div>
+
+          <p class="panel-desc" id="p-desc"></p>
+
+          <dl class="stats" id="p-stats"></dl>
+
+          <div class="fact">
+            <span class="fact-label">Fact</span>
+            <p id="p-fact"></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Numbers -->
+    <section id="numbers" class="numbers">
+      <div class="section-head">
+        <h2>Some numbers</h2>
+      </div>
+      <div class="num-grid">
+        <div class="num-card"><span class="num">99.86<small>%</small></span><span class="num-label">of the solar system's mass is in the Sun</span></div>
+        <div class="num-card"><span class="num">8<small>m</small> 20<small>s</small></span><span class="num-label">for sunlight to reach Earth</span></div>
+        <div class="num-card"><span class="num">4.6<small>B</small></span><span class="num-label">years since the solar system formed</span></div>
+        <div class="num-card"><span class="num">4.5<small>B km</small></span><span class="num-label">from the Sun to Neptune</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>SOL<span>ATLAS</span></p>
+    <p class="muted">Figures are rounded averages. Planet sizes, distances and speeds are not to scale.</p>
+  </footer>
+
+  <script src="solar3d.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
